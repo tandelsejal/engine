@@ -10,6 +10,7 @@ public class PromotionFactory {
 				new NItemPromotions().setPromotionDetail();
 				break;
 			case PromotionType.ITEMS_IN_PAIR:
+				new PairPromotions().setPromotionDetail();
 				break;
 			case PromotionType.PERCENT_OF_ITEM:
 				break;

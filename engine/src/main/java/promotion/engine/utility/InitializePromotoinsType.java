@@ -21,7 +21,6 @@ public class InitializePromotoinsType {
 		System.out.println("Select promotion types from below choice(1 to 3): ");
 		System.out.println(PromotionType.N_ITEMS+" N_ITEMS");
 		System.out.println(PromotionType.ITEMS_IN_PAIR+" ITEMS_IN_PAIR");
-		System.out.println(PromotionType.PERCENT_OF_ITEM+" PERCENT_OF_ITEM");
 		int item =  new Scanner(System.in).nextInt();
 		PromotionFactory.setPromotionObject(item);
 	}
