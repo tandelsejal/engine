@@ -28,6 +28,7 @@ public class InitializePromotoinsType {
 			catch (Exception e) {
 				CustomerInputs.notifyForWrongEntry();
 			}
+			System.out.println("\nChoose option :");
 			stemp = new Scanner(System.in).nextLine();
 		}
 	}

@@ -3,8 +3,12 @@ package promotion.engine.factory;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import promotion.engine.utility.CustomerInputs;
 import promotion.engine.utility.InitializePromotoinsType;
 
+/**
+ *Promotion Class for providing promotion on Two items
+ * */
 public class PairPromotions extends Promotion{
 	private char item1;
 	private char item2;
@@ -21,14 +25,26 @@ public class PairPromotions extends Promotion{
 
 	@Override
 	public void setPromotionDetail() {
-		System.out.println("Enter item1, item2 and price by space seperation");
-		String sTemp = new Scanner(System.in).nextLine();
-		char item1 = sTemp.split(" ")[0].charAt(0);
-		char item2 = sTemp.split(" ")[1].charAt(0);
-		double price = Double.parseDouble(sTemp.split(" ")[2]);
-		Promotion prom = new PairPromotions(item1, item2, price);
-		InitializePromotoinsType.addDataInDataStructure(item1, prom);
-		InitializePromotoinsType.addDataInDataStructure(item2, prom);
+		System.out.println("\nEnter space seperated item1, item2 and price :");
+		String[] sTemp = new Scanner(System.in).nextLine().split(" ");
+		if(sTemp.length >= 3) {
+			try {
+				char item1 = sTemp[0].charAt(0);
+				char item2 = sTemp[1].charAt(0);
+				double price = Double.parseDouble(sTemp[2]);
+				Promotion prom = new PairPromotions(item1, item2, price);
+				InitializePromotoinsType.addDataInDataStructure(item1, prom);
+				InitializePromotoinsType.addDataInDataStructure(item2, prom);
+			}
+			catch (Exception e) {
+				CustomerInputs.notifyForWrongEntry();
+				setPromotionDetail();
+			}
+		}
+		else {
+			CustomerInputs.notifyForWrongEntry();
+			setPromotionDetail();
+		}
 	}
 
 	@Override

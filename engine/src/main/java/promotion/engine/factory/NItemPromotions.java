@@ -1,13 +1,14 @@
 package promotion.engine.factory;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
-import promotion.engine.beans.DataBean;
+import promotion.engine.utility.CustomerInputs;
 import promotion.engine.utility.InitializePromotoinsType;
 
+/**
+ * Promotion Class for provide promotion on Same Type of Items 
+ * */
 public class NItemPromotions extends Promotion {
 	private char item;
 	private int count;
@@ -24,17 +25,23 @@ public class NItemPromotions extends Promotion {
 
 	@Override
 	public void setPromotionDetail() {
-		System.out.println("Enter SKU ID, Count and price by space seperation");
+		System.out.println("\nEnter space seperated SKU id, Count and Price :");
 		String[] sTemp = new Scanner(System.in).nextLine().split(" ");
 		if(sTemp.length >= 3) {
-			char item = sTemp[0].charAt(0);
-			int count = Integer.parseInt(sTemp[1]);
-			double price = Double.parseDouble(sTemp[2]);
-			Promotion prom = new NItemPromotions(item, count, price);
-			InitializePromotoinsType.addDataInDataStructure(item, prom);
+			try {
+				char item = sTemp[0].charAt(0);
+				int count = Integer.parseInt(sTemp[1]);
+				double price = Double.parseDouble(sTemp[2]);
+				Promotion prom = new NItemPromotions(item, count, price);
+				InitializePromotoinsType.addDataInDataStructure(item, prom);
+			}
+			catch (Exception e) {
+				CustomerInputs.notifyForWrongEntry();
+				setPromotionDetail();
+			}
 		}
 		else {
-			System.out.println("Wrong input");
+			CustomerInputs.notifyForWrongEntry();
 			setPromotionDetail();
 		}
 	}
