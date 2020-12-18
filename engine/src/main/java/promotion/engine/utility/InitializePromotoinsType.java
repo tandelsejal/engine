@@ -37,7 +37,7 @@ public class InitializePromotoinsType {
 		System.out.println("\n\n\nLet us add Promotion Types Now..!!\nWe are having below choice here..!");
 		System.out.println(PromotionType.N_ITEMS+" - N_ITEMS");
 		System.out.println(PromotionType.ITEMS_IN_PAIR+" - ITEMS_IN_PAIR");
-		System.out.println("Enter done once you done with addition");
+		System.out.println("\nEnter done once you done with all promotion types");
 		System.out.println("\nChoose option :");
 	}
 

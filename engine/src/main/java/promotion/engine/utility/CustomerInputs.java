@@ -3,15 +3,29 @@ package promotion.engine.utility;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * This class is used for taking order list from the user
+ * */
 public class CustomerInputs {
 	public static HashMap<Character, Integer> takeCustomerInputs() {
 		HashMap<Character, Integer> order = new HashMap<>();
-		System.out.println("Enter SKU Id and Quanity Space separted..!! \n Enter done after completing list..!!");
+		System.out.println("\n\n\nLet us Now Take a Order List...!!\nEnter done once you done with list..!!\nEnter space saperated SKU Id and Quantity :");
 		String sTemp = new Scanner(System.in).nextLine();
 		while(!sTemp.equalsIgnoreCase("done")) {
-			char item = sTemp.split(" ")[0].charAt(0);
-			int quantity = Integer.parseInt(sTemp.split(" ")[1]);
-			order.put(item, quantity);
+			String data[] = sTemp.split(" ");
+			if(data.length >= 2) {
+				try {
+					char item = sTemp.split(" ")[0].charAt(0);
+					int quantity = Integer.parseInt(sTemp.split(" ")[1]);
+					order.put(item, quantity);
+				}
+				catch (Exception e) {
+					notifyForWrongEntry();
+				}
+			}
+			else {
+				notifyForWrongEntry();
+			}
 			sTemp = new Scanner(System.in).nextLine();
 		}
 		return order;

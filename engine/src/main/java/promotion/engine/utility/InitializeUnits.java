@@ -14,23 +14,29 @@ public class InitializeUnits {
 
 	public static void addSKUPriceDetail() {
 		System.out.println("Let us add SKU Detail...!!\nEnter total number of SKU :");
-		int item = new Scanner(System.in).nextInt();
-
-		System.out.println("Enter space seperated SKU Id and price corresponding to it :");
-		for (int iter = 0; iter < item;) {
-			System.out.println("SKU " + (iter + 1));
-			
-			String temp[] = new Scanner(System.in).nextLine().split(" ");
-			if (temp.length >= 2) {
-				try {
-					DataBean.units.put(temp[0].charAt(0), Double.parseDouble(temp[1]));
-					iter++;
-				} catch (Exception e) {
+		try {
+			int item = new Scanner(System.in).nextInt();
+	
+			System.out.println("Enter space seperated SKU Id and price corresponding to it :");
+			for (int iter = 0; iter < item;) {
+				System.out.println("SKU " + (iter + 1));
+				
+				String temp[] = new Scanner(System.in).nextLine().split(" ");
+				if (temp.length >= 2) {
+					try {
+						DataBean.units.put(temp[0].charAt(0), Double.parseDouble(temp[1]));
+						iter++;
+					} catch (Exception e) {
+						CustomerInputs.notifyForWrongEntry();
+					}
+				} else {
 					CustomerInputs.notifyForWrongEntry();
 				}
-			} else {
-				CustomerInputs.notifyForWrongEntry();
 			}
+		}
+		catch (Exception e) {
+			CustomerInputs.notifyForWrongEntry();
+			addSKUPriceDetail();
 		}
 	}
 

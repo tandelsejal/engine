@@ -1,8 +1,6 @@
 package promotion.engine;
 
-import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 
@@ -32,6 +30,6 @@ public class AppTest
     @Test
     public void totalOrder()
     {
-        assertEquals(100.0, ProcessOrder.processOrder(order));
+        assertEquals(150.0, ProcessOrder.processOrder(order));
     }
 }

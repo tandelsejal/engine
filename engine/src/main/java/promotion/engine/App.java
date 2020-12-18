@@ -8,7 +8,7 @@ import promotion.engine.utility.InitializePromotoinsType;
 import promotion.engine.utility.InitializeUnits;
 
 /**
- * Hello world!
+ * Application start from here
  *
  */
 public class App {
@@ -16,7 +16,6 @@ public class App {
 		InitializeUnits.addSKUPriceDetail();
 		InitializePromotoinsType.addPromotionTypeDetails();
 		HashMap<Character, Integer> order = CustomerInputs.takeCustomerInputs();
-		double amount = ProcessOrder.processOrder(order);
+		System.out.println( "Amount : " + ProcessOrder.processOrder(order) );
 	}
-	
 }

@@ -51,6 +51,11 @@ public class PairPromotions extends Promotion{
 	public double getPrice(char item, HashMap<Character, Integer> order) {
 		int min = Math.min(order.get(this.item1), order.get(this.item2));
 		double amount = this.price * min;
+		removeCalculatedItem(min, order);
+		return amount;
+	}
+
+	private void removeCalculatedItem(int min, HashMap<Character, Integer> order) {
 		if(order.get(this.item1) > min) {
 			order.put(this.item1, order.get(this.item1)-min);
 		}
@@ -63,9 +68,8 @@ public class PairPromotions extends Promotion{
 		else {
 			order.remove(this.item2);
 		}
-		return amount;
 	}
-
+	
 	@Override
 	public boolean isValid(char item, HashMap<Character, Integer> order) {
 		if( (item == this.item1 && order.containsKey(this.item2)) || 
@@ -75,3 +79,4 @@ public class PairPromotions extends Promotion{
 		return false;
 	}
 }
+

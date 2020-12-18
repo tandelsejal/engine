@@ -58,12 +58,16 @@ public class NItemPromotions extends Promotion {
 	public double getPrice(char item, HashMap<Character, Integer> temporder) {
 		int total = temporder.get(item);
 		double amount = this.price * (total/this.count);
+		removeCalculatedItem(total, temporder);
+		return amount;
+	}
+	
+	private void removeCalculatedItem(int total, HashMap<Character, Integer> temporder) {
 		if(total % this.count != 0) {
 			temporder.put(item, total % this.count);
 		}
 		else {
 			temporder.remove(item);
 		}
-		return amount;
 	}
 }
