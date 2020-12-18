@@ -1,5 +1,6 @@
 package promotion.engine.factory;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 import promotion.engine.utility.InitializePromotoinsType;
@@ -31,9 +32,30 @@ public class PairPromotions extends Promotion{
 	}
 
 	@Override
-	public double getPrice(Promotion promotion) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getPrice(char item, HashMap<Character, Integer> order) {
+		int min = Math.min(order.get(this.item1), order.get(this.item2));
+		double amount = this.price * min;
+		if(order.get(this.item1) > min) {
+			order.put(this.item1, order.get(this.item1)-min);
+		}
+		else {
+			order.remove(this.item1);
+		}
+		if(order.get(this.item2) > min) {
+			order.put(this.item2, order.get(this.item2)-min);
+		}
+		else {
+			order.remove(this.item2);
+		}
+		return amount;
 	}
 
+	@Override
+	public boolean isValid(char item, HashMap<Character, Integer> order) {
+		if( (item == this.item1 && order.containsKey(this.item2)) || 
+				(item == this.item2 && order.containsKey(this.item1))) {
+			return true;
+		}
+		return false;
+	}
 }
