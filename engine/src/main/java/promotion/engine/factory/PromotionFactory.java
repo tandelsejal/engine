@@ -12,9 +12,8 @@ public class PromotionFactory {
 			case PromotionType.ITEMS_IN_PAIR:
 				new PairPromotions().setPromotionDetail();
 				break;
-			case PromotionType.PERCENT_OF_ITEM:
-				break;
 			default:
+				System.out.println("Wrong Choice...!!");
 				break;
 		}
 		return promotion;
