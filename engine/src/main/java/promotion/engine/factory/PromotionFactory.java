@@ -1,7 +1,11 @@
 package promotion.engine.factory;
 
 import promotion.engine.beans.PromotionType;
+import promotion.engine.utility.CustomerInputs;
 
+/**
+ * This is a Promotion Factory which will provide promotion type object
+ * */
 public class PromotionFactory {
 	public static Promotion setPromotionObject(int promotionType) {
 		Promotion promotion = null;
@@ -13,7 +17,7 @@ public class PromotionFactory {
 				new PairPromotions().setPromotionDetail();
 				break;
 			default:
-				System.out.println("Wrong Choice...!!");
+				CustomerInputs.notifyForWrongEntry();
 				break;
 		}
 		return promotion;

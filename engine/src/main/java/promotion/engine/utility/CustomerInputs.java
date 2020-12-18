@@ -16,4 +16,7 @@ public class CustomerInputs {
 		}
 		return order;
 	}
+	public static void notifyForWrongEntry() {
+		System.out.println("Wrong detail...!!Enter It again");
+	}
 }
